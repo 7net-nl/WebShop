@@ -1,0 +1,198 @@
+﻿@model  DetailViewModel
+
+@{ 
+    ViewBag.Title = "Detail";
+}
+
+<div class="container main-container headerOffset">
+    @await Html.PartialAsync("BreedCrumb", Context.Request.Path.Value.ToString())
+    <div class="row transitionfx">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <img src="~/images/product_details/low-res-white/@Model.Product.Images[1]" class="img-responsive" alt="img" />
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 padding-top-30">
+                <img src="~/images/product_details/low-res-white/@Model.Product.Images[1]" class="img-responsive" alt="img" />
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 padding-top-30">
+                <img src="~/images/product_details/low-res-white/@Model.Product.Images[2]" class="img-responsive" alt="img" />
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 padding-top-30">
+                <img src="~/images/product_details/low-res-white/@Model.Product.Images[3]" class="img-responsive" alt="img" />
+            </div>
+
+            </div>
+            <!--/ left column end -->
+            <!-- right column -->
+            <div class="col-lg-6 col-md-6 col-sm-5">
+                <h1 class="product-title">@Model.Product.Title</h1>
+                <h3 class="product-code">Brand : Zara</h3>
+                <div class="rating">
+                    <p>
+                        <span><i class="fa fa-star"></i></span> <span><i class="fa fa-star"></i></span> <span>
+                            <i class="fa fa-star"></i>
+                        </span> <span><i class="fa fa-star"></i></span> <span>
+                            <i class="fa fa-star-o "></i>
+                        </span> <span class="ratingInfo">
+                            <span> / </span> <a data-target="#modal-review" data-toggle="modal">Write a review</a>
+                        </span>
+                    </p>
+                </div>
+                <div class="product-price">
+                    <span class="price-sales"> $@Model.Product.NewPrice</span> <span class="price-standard">$@Model.Product.OldPrice</span>
+                </div>
+                <div class="details-description">
+                    <p>@Model.Product.ShortDescription</p>
+                </div>
+                <div class="color-details">
+                    <span class="selected-color"><strong>COLOR</strong></span>
+                    <ul class="swatches Color">
+                        <li class="selected"><a style="background-color:#f1f40e"> </a></li>
+                        @foreach (var item in Model.Product.Colors)
+                        {
+                            <li><a style="background-color:@item"></a></li>
+                        }
+
+
+                    </ul>
+                </div>
+                <!--/.color-details-->
+                <div class="productFilter productFilterLook2">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="filterBox">
+                               <input type="number" class="form-control" min="1" max="50" value="1" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="filterBox">
+                                <select class="form-control">
+                                    <option selected disabled>Size</option>
+                                    @foreach (var item in Model.Product.Sizes)
+                                    {
+
+                                        <option value="@item">@item</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- productFilter -->
+                <div class="cart-actions">
+                    <div class="addto row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <button onclick="productAddToCartForm.submit(this);"
+                                    class="button btn-block btn-cart cart first" title="Add to Cart" type="button">
+                                Add
+                                to Cart
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <a class="link-wishlist wishlist btn-block ">
+                                Add
+                                to Wishlist
+                            </a>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                    <h3 class="incaps"><i class="fa fa fa-check-circle-o color-in"></i>@Model.Product.Available</h3>
+                    <h3 class="incaps"><i class="glyphicon glyphicon-lock"></i> Secure online ordering</h3>
+                </div>
+                <!--/.cart-actions-->
+                <div class="clear"></div>
+                <div class="product-tab w100 clearfix">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+                        <li><a href="#size" data-toggle="tab">Size</a></li>
+                        <li><a href="#shipping" data-toggle="tab">Shipping</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="details">
+                           @Model.Product.LongDescription
+                        </div>
+                        <div class="tab-pane" id="size">
+                            16" waist<br>
+                            34" inseam<br>
+                            10.5" front rise<br>
+                            8.5" knee<br>
+                            7.5" leg opening<br>
+                            <br>
+                            Measurements taken from size 30<br>
+                            Model wears size 31. Model is 6'2 <br>
+                            <br>
+                        </div>
+                        <div class="tab-pane" id="shipping">
+                            <table>
+                                <colgroup>
+                                    <col style="width:33%">
+                                    <col style="width:33%">
+                                    <col style="width:33%">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td>Standard</td>
+                                        <td>1-5 business days</td>
+                                        <td>$7.95</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Two Day</td>
+                                        <td>2 business days</td>
+                                        <td>$15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Next Day</td>
+                                        <td>1 business day</td>
+                                        <td>$30</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3">* Free on orders of $50 or more</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.tab content -->
+                </div>
+                <!--/.product-tab-->
+                <div style="clear:both"></div>
+                <div class="product-share clearfix">
+                    <p> SHARE </p>
+                    <div class="socialIcon">
+                        <a href="#"> <i class="fa fa-facebook"></i></a> <a href="#">
+                            <i class="fa fa-twitter"></i>
+                        </a> <a href="#"> <i class="fa fa-google-plus"></i></a> <a href="#">
+                            <i class="fa fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+                <!--/.product-share-->
+            </div>
+            <!--/ right column end -->
+        </div>
+    <!--/.row-->
+    <div class="row recommended">
+        <h1> YOU MAY ALSO LIKE </h1>
+        <div id="SimilarProductSlider">
+            @foreach (var item in Model.Products)
+            {
+                <div class="item">
+                    <div class="product">
+                        <a class="product-image"> <img src=@Url.Content($@"~/images/product/{item.Images[0]}") alt="img"> </a>
+                        <div class="description">
+                            <h4><a href="san-remo-spaghetti">@item.Title</a></h4>
+                            <div class="price"><span>$@item.NewPrice</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.item-->
+            }
+
+        </div>
+        <!--/.recommended-->
+    </div>
+    <div style="clear:both"></div>
+</div>

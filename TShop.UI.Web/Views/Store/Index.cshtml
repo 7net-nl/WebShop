@@ -1,0 +1,127 @@
+﻿@model StoreViewModel
+
+@{ 
+    ViewBag.Title = "Shop";
+}
+
+
+<div class="container main-container headerOffset">
+    <!-- Main component call to action -->
+    @await Html.PartialAsync("BreedCrumb",Context.Request.Path.Value.ToString())
+    <!-- /.row  -->
+    <div class="row">
+        <!--left column-->
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="panel-group">
+                @await Component.InvokeAsync("CategoryShop",Model.Paging)
+                <!--/Category menu end-->
+                @await Component.InvokeAsync("PriceShop",Model.Paging)
+                <!--/price panel end-->
+                @await Component.InvokeAsync("BrandShop",Model.Paging)
+                <!--/brand panel end-->
+                @await Component.InvokeAsync("ColorShop",Model.Paging)
+                <!--/color panel end-->
+            </div>
+        </div>
+        <!--right column-->
+        <div class="col-lg-9 col-md-9 col-sm-12">
+            <div class="w100 clearfix category-top">
+                <h2> Women COLLECTION </h2>
+                <div class="categoryImage"><img src="images/site/category.jpg" class="img-responsive" alt="img"></div>
+            </div>
+            <!--/.category-top-->
+            <div class="w100 productFilter clearfix">
+                <p class="pull-left"> Showing <strong>12</strong> products </p>
+                <div class="pull-right ">
+                    <div class="change-order pull-right">
+                        <select class="form-control" name="orderby">
+                            <option selected="selected">Default sorting</option>
+                            <option value="popularity">Sort by popularity</option>
+                            <option value="rating">Sort by average rating</option>
+                            <option value="date">Sort by newness</option>
+                            <option value="price">Sort by price: low to high</option>
+                            <option value="price-desc">Sort by price: high to low</option>
+                        </select>
+                    </div>
+                    <div class="change-view pull-right">
+                        <a href="#" title="Grid" class="grid-view">
+                            <i class="fa fa-th-large"></i>
+                        </a> <a href="#" title="List" class="list-view ">
+                            <i class="fa fa-th-list"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--/.productFilter-->
+            <div class="row  categoryProduct xsResponse clearfix">
+
+                @foreach (var item in Model.Products)
+                {
+                    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6">
+                        <div class="product">
+                            <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
+                               data-placement="left">
+                                <i class="glyphicon glyphicon-heart"></i>
+                            </a>
+                            <div class="image">
+                                <div class="quickview">
+                                    <a data-toggle="modal" class="btn btn-xs btn-quickview" asp-action="QuickView" asp-controller="Store" asp-route-Id="@item.ID"
+                                       data-target="#productSetailsModalAjax">Quick View</a>
+                                </div>
+                                <a asp-action="Detail" asp-controller="Store" asp-route-Id="@item.ID">
+                                    <img src=@Url.Content($@"images/product/{item.Images[0]}") alt="img"
+                                         class="img-responsive">
+                                </a>
+                                <div class="promotion">
+                                    <span class="new-product"> NEW</span> <span class="discount">15% OFF</span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <h4><a>@item.Title</a></h4>
+                                <div class="grid-description">
+                                    <p>@item.ShortDescription</p>
+                                </div>
+                                <div class="list-description">
+                                    <p>
+                                        @item.LongDescription
+                                    </p>
+                                </div>
+                                <span class="size">
+                                    @foreach (var size in item.Sizes)
+                                    {
+                                       @(size + " / ");
+                                        
+                                    }
+                                </span>
+                                <span class="size">
+                                    @foreach (var color in item.Colors)
+                                    {
+                                        @(color + " / ");
+                                    }
+                                </span>
+                                <span class="size">@item.Category</span>
+
+                            </div>
+                            <div class="price"><span>$@item.NewPrice</span></div>
+                            <div class="action-control">
+                                <a class="btn btn-primary">
+                                    <span class="add2cart">
+                                        <i class="glyphicon glyphicon-shopping-cart"></i> Add to cart
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <!--/.item-->
+            <div Pagination="Model.Paging"></div>
+        </div>
+            <!--/.categoryProduct || product content end-->
+         
+            <!--/.categoryFooter-->
+        </div>
+        <!--/right column end-->
+    </div>
+    <!-- /.row  -->

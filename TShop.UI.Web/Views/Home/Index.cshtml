@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@await Html.PartialAsync("Banner")
+
+@await Component.InvokeAsync("Product", "New Arrival")
+<!-- /main container -->
+@await Html.PartialAsync("ParallexImage",new ParallexImageViewModel
+{
+ BackgroundImage = "parallax-image-1",
+ Price = 200 ,
+ Description1 = "FREE INTERNATIONAL SHIPPING! Get Free Shipping Coupons",
+ Description2 = "Energistically develop parallel mindshare rather than premier deliverables."
+})
+<!--/.parallax-image-1-->
+@await Component.InvokeAsync("Product", "Corting Today")
+<!--main-container-->
+@await Html.PartialAsync("ParallexImage",new ParallexImageViewModel
+{
+ BackgroundImage= "parallax-image-2",
+ Price = 400 ,
+ Description1 = "FREE INTERNATIONAL SHIPPING! Get Free Shipping Coupons",
+ Description2 = "Energistically develop parallel mindshare rather than premier deliverables."
+})
+<!--/.parallax-section-->
+@await Component.InvokeAsync("Product", "Corting Week")
+
+@await Html.PartialAsync("ParallexImage",new ParallexImageViewModel
+{
+ BackgroundImage= "parallax-image-1",
+ Price = 500 ,
+ Description1 = "FREE INTERNATIONAL SHIPPING! Get Free Shipping Coupons",
+ Description2 = "Energistically develop parallel mindshare rather than premier deliverables."
+})
+
+@await Html.PartialAsync("CollectionProduct")
+@await Html.PartialAsync("CollectionBrand")

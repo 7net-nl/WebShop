@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0049)http://templatecycle.com/tshop/v6/gray/index.html --><meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+<html lang="en">
+<head>
+    @await Html.PartialAsync("Head")
+</head>
+<body>
+    <!-- Fixed navbar start -->
+    @await Html.PartialAsync("Header")
+    <!-- /.Fixed navbar  -->
+    <!--/.banner style1-->
+    @RenderBody()
+    <!-- Product Details Modal  -->
+    <!-- Modal -->
+    @await Html.PartialAsync("PlaceModalProduct")
+    <!-- /.modal -->
+    <!-- End Modal -->
+    @await Html.PartialAsync("Footer")
+
+    @*@await Html.PartialAsync("ModalAds")*@
+
+    <!-- Modal Login start -->
+    @await Html.PartialAsync("ModalLogin")
+    <!-- /.Modal Login -->
+    <!-- Modal Signup start -->
+    @await Html.PartialAsync("ModalSignUp")
+    <!-- /.ModalSignup End -->
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+     @await Html.PartialAsync("Script")   
+     @RenderSection("Scripts",false)
+</body>
+</html>

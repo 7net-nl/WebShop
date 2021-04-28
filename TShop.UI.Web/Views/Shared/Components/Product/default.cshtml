@@ -1,0 +1,57 @@
+﻿@model ProductViewModel
+
+<div class="container main-container">
+    <!-- Main component call to action -->
+    <div class="row featuredPostContainer globalPadding style2">
+        <h3 class="section-title style2 text-center"><span>@Model.Title</span></h3>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+            @foreach (var item in Model.Products)
+            {
+            <div class="item col-lg-3 col-md-3">
+                <div class="product">
+                    <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
+                       data-placement="left">
+                        <i class="glyphicon glyphicon-heart"></i>
+                    </a>
+                    <div class="image">
+                        <div class="quickview">
+                            <a data-toggle="modal" class="btn btn-xs btn-quickview" asp-action="QuickView" asp-controller="Store" asp-route-Id="@item.ID"
+                               data-target="#productSetailsModalAjax">Quick View</a>
+                        </div>
+                        <a asp-action="Detail" asp-controller="Store" asp-route-Id="@item.ID">
+                            <img src=@Url.Content($@"~/images/product/{item.Images[0]}") alt="img"
+                                 class="img-responsive">
+                        </a>
+                        <div class="promotion">
+                            <span class="new-product"> NEW</span> <span class="discount">15% OFF</span>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <h4><a>@item.Title</a></h4>
+                        <p>@item.ShortDescription</p>
+                        <span class="size">
+                            @foreach (var size in item.Sizes)
+                            {
+                                @size
+                            }
+                        </span>
+                    </div>
+                    <div class="price"><span>$@item.NewPrice</span></div>
+                    <div class="action-control">
+                        <a class="btn btn-primary">
+                            <span class="add2cart">
+                                <i class="glyphicon glyphicon-shopping-cart"></i> Add to cart
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                    }
+
+                </div>
+            
+        <!--/.productslider-->
+    </div>
+    <!--/.featuredPostContainer-->
+</div>

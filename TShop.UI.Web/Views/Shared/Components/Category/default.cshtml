@@ -1,0 +1,44 @@
+﻿@model CategoryViewModel
+
+<li class="dropdown megamenu-fullwidth">
+    <a data-toggle="dropdown" class="dropdown-toggle">Store <b class="caret"> </b></a>
+    <ul class="dropdown-menu">
+        <li class="megamenu-content ">
+            <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
+                <li class="no-border">
+                    <p class="promo-1"><strong> COLLECTION </strong></p>
+                </li>
+                <li><a asp-action="Index" asp-controller="Store"> ALL PRODUCTS </a></li>
+                @foreach (var item in Model.Categories)
+                {
+                    <li><a asp-action="Index" asp-controller="Store" asp-route-Category="@item.Name">@item.Name</a></li>
+                }
+
+
+            </ul>
+            <ul class="col-lg-3  col-sm-3 col-md-3  col-xs-4">
+                <li>
+                    <a class="newProductMenuBlock" href="~/product-details.html">
+                        <img class="img-responsive" src="~/images/site/promo1.jpg" alt="product"> <span class="ProductMenuCaption"><i class="fa fa-caret-right"> </i>JEANS</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
+                <li>
+                    <a class="newProductMenuBlock" href="~/product-details.html">
+                        <img class="img-responsive" src="~/images/site/promo2.jpg" alt="product"> <span class="ProductMenuCaption">
+                            <i class="fa fa-caret-right"></i> DRESS
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
+                <li>
+                    <a class="newProductMenuBlock" href="~/product-details.html">
+                        <img class="img-responsive" src="~/images/site/promo3.jpg" alt="product"> <span class="ProductMenuCaption"><i class="fa fa-caret-right"> </i>SHOES</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</li>

@@ -1,0 +1,16 @@
+﻿
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Price</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked tree">
+            <li><a asp-action="Index" asp-controller="Store" asp-route-MinPrice="20" asp-route-MaxPrice="40" asp-route-Color="@Model.Paging.Color" asp-route-Category="@Model.Paging.Category">20$ - 40$</a></li>
+            <li><a asp-action="Index" asp-controller="Store" asp-route-MinPrice="50" asp-route-MaxPrice="100" asp-route-Color="@Model.Paging.Color" asp-route-Category="@Model.Paging.Category">50$ - 100$</a></li>
+            <li><a asp-action="Index" asp-controller="Store" asp-route-MinPrice="100" asp-route-MaxPrice="1000" asp-route-Color="@Model.Paging.Color" asp-route-Category="@Model.Paging.Category">100$ - 1000$</a></li>
+            <li><a asp-action="Index" asp-controller="Store" asp-route-MinPrice="1300" asp-route-MaxPrice="2500" asp-route-Color="@Model.Paging.Color" asp-route-Category="@Model.Paging.Category">1300$ - 2500$</a></li>
+            <li><a asp-action="Index" asp-controller="Store" asp-route-MinPrice="3000" asp-route-MaxPrice="5000" asp-route-Color="@Model.Paging.Color" asp-route-Category="@Model.Paging.Category">3000$ - 5000$</a></li>
+            <li><a asp-action="Index" asp-controller="Store" asp-route-Category ="@Model.Paging.Category" asp-route-Color="@Model.Paging.Color">Dont' know</a></li>
+        </ul>
+    </div>
+</div>

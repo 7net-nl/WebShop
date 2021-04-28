@@ -1,0 +1,98 @@
+﻿<div class="navbar navbar-tshop navbar-fixed-top megamenu" role="navigation">
+    <div class="navbar-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+                    <div class="pull-left ">
+                        <ul class="userMenu ">
+                            <li><a><i class="glyphicon glyphicon-envelope" style="margin-right:5px;"></i>fttcab@gmail.com</a></li>
+                            <li class="phone-number">
+                                <a href="~/callto_3a+12025550151">
+                                    <span> <i class="glyphicon glyphicon-phone-alt "></i></span>
+                                    <span class="hidden-xs" style="margin-left:5px"> +1-202-555-0151 </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
+                    <div class="pull-right">
+                        <ul class="userMenu">
+
+                            @await Html.PartialAsync("_LoginPartial")
+
+
+                            @*<li>
+            <a href="~/account-1.html">
+                <span class="hidden-xs"> My Account</span> <i class="glyphicon glyphicon-user hide visible-xs "></i>
+            </a>
+        </li>
+        <li>
+            <a href="~/#" data-toggle="modal" data-target="#ModalLogin">
+                <span class="hidden-xs">Sign In</span>
+                <i class="glyphicon glyphicon-log-in hide visible-xs "></i>
+            </a>
+        </li>
+        <li class="hidden-xs">
+            <a href="~/#" data-toggle="modal" data-target="#ModalSignup">
+                Create
+                Account
+            </a>
+        </li>*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.navbar-top-->
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"> </span> <span class="icon-bar"></span> <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand " href="~/index.html"> <img src="~/images/logo.png" alt="TSHOP"> </a>
+            <!-- this part for mobile -->
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a asp-action="Index" asp-controller="Home"> Home </a></li>
+                @await Component.InvokeAsync("Category")
+                <li><a asp-action="About" asp-controller="Home">About</a></li>
+                <li><a asp-action="Contact" asp-controller="Home">Contact</a></li>
+                <!-- change width of megamenu = use class > megamenu-fullwidth, megamenu-60width, megamenu-40width -->
+
+
+
+            </ul>
+
+            <!--- this part will be hidden for mobile version -->
+            <ul class="nav navbar-nav navbar-right">
+                @await Component.InvokeAsync("CartShop")
+                <li><a asp-action="Index" asp-controller="WishList"><i class="glyphicon glyphicon-heart"></i></a></li>
+                <!--/.cartMenu-->
+                <div class="search-box">
+                    <div class="input-group">
+                        <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button>
+                    </div>
+                    <!-- /input-group -->
+                </div>
+                <!--/.search-box -->
+            </ul>
+            <!--/.navbar-nav hidden-xs-->
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+    <!--/.container -->
+    <form asp-action="Search" asp-controller="Store" method="post">
+        <div class="search-full text-right">
+            <a class="pull-right search-close"> <i class=" fa fa-times-circle"> </i> </a>
+            <div class="searchInputBox pull-right">
+                <input type="search" name="q" placeholder="start typing and hit enter to search"
+                       class="search-input">
+                <button class="btn-nobg search-btn" type="submit"><i class="fa fa-search"> </i></button>
+            </div>
+        </div>
+    </form>
+    <!--/.search-full-->
+</div>
